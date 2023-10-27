@@ -1,26 +1,30 @@
 public class Book {
 
-    private String title;
-    private String author;
-    private int pages;
-    private String refNumber;
+    private final String author;
+    private final String title;
+    private final int pages;
+    private final String refNumber;
     static int numOfBooks = 0;
     private boolean borrowed;
 
 
-    /* Set the author and title field when this object is constructed. */
-
-
     public Book (String author, String title, int pages, boolean borrowed) {
         numOfBooks++;
+
+        //Sets the author, title, pages, and borrowed fields when this object is constructed.
         this.author = author;
         this.title = title;
         this.pages = pages;
         this.borrowed = borrowed;
-        this.refNumber = author.split(" ")[1].substring(0, 3).toUpperCase() + formatNumberOfBooks(numOfBooks);//what if author's name is less than 3?
-// Add the methods here ...
+
+        //Formats the reference number to be the last 3 letters of the author's last name, then the numOfBooks.
+        if (author.split(" ")[author.split(" ").length-1].length() < 3){//If author's last name is less than 3 letters, use their full last name
+            this.refNumber = author.split(" ")[author.split(" ").length-1].toUpperCase() + formatNumberOfBooks(numOfBooks);
+        }else{
+            this.refNumber = author.split(" ")[author.split(" ").length-1].substring(0, 3).toUpperCase() + formatNumberOfBooks(numOfBooks);
+        }
     }
-    private String formatNumberOfBooks(int numOfBooks){
+    private String formatNumberOfBooks(int numOfBooks){//Formats numOfBooks into a 3-character string
         if (String.valueOf(numOfBooks).length() >= 3){
             return String.valueOf(numOfBooks);
         }else{
@@ -31,13 +35,12 @@ public class Book {
             formattedNumber.append(numOfBooks);
             return formattedNumber.toString();
         }
-
     }
     public void printAuthor(){
-        System.out.println(this.author);
+        System.out.print(this.author);
     }
     public void printTitle(){
-        System.out.println(this.title);
+        System.out.print(this.title);
     }
     public String getRefNumber() {
         return refNumber;
@@ -62,7 +65,7 @@ public class Book {
         this.borrowed = borrowed;
     }
 
-    public void printDetails(){
-        System.out.println("Title: " + title + ", Author: " + author + ", Pages: " + pages + ", Reference Number: " + refNumber + ", Borrowed: " + borrowed);
+    public void printDetails(){//Prints all the details of the book
+        System.out.printf("Reference Number: %-20s Title: %-20s Author: %-20s Pages: %-,20d Borrowed: %b", this.getRefNumber(), this.getTitle(), this.getAuthor(), this.getPages(), this.isBorrowed());
     }
 }
