@@ -12,12 +12,12 @@ public class Book {
 
 
     public Book (String author, String title, int pages, boolean borrowed) {
+        numOfBooks++;
         this.author = author;
         this.title = title;
         this.pages = pages;
         this.borrowed = borrowed;
-        this.refNumber = author.substring(0, 3) + formatNumberOfBooks(numOfBooks);//what if author's name is less than 3?
-        numOfBooks++;
+        this.refNumber = author.split(" ")[1].substring(0, 3).toUpperCase() + formatNumberOfBooks(numOfBooks);//what if author's name is less than 3?
 // Add the methods here ...
     }
     private String formatNumberOfBooks(int numOfBooks){
