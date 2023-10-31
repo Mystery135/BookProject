@@ -42,6 +42,7 @@ public class Book {
     public void printTitle(){
         System.out.print(this.title);
     }
+    //Getters & Setters
     public String getRefNumber() {
         return refNumber;
     }

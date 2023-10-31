@@ -7,8 +7,10 @@ public class BookClient {
         System.out.println("How many books do you want to input?");
 
         int booksToInput = getNextInt(scanner, "How many books do you want to input?", true);
-        scanner.nextLine();//Make scanner go to next line
+        scanner.nextLine();//Makes scanner go to next line
         ArrayList<Book> books = new ArrayList<>();
+
+        //Collects book information from user booksToInput times
         for (int i = 0; i<booksToInput; i++){
             System.out.println();
             System.out.println("Book #" + (i+1));
@@ -22,9 +24,10 @@ public class BookClient {
             System.out.print("Borrowed (true/false): ");
             boolean borrowed = getNextBoolean(scanner, "Borrowed (true/false): ", false);
             scanner.nextLine();
-            books.add(new Book(author, title, pages, borrowed));//Adds ?????nhiosgfdsg
+            books.add(new Book(author, title, pages, borrowed));//Adds a new book to the book arraylist
         }
     }
+    //Makes sure the user inputs a valid integer
     private static int getNextInt(Scanner scanner, String prompt, boolean println){
         while (!scanner.hasNextInt()){
             System.out.println("Input a valid integer!");
@@ -37,6 +40,7 @@ public class BookClient {
         }
         return scanner.nextInt();
     }
+    //Makes sure the user inputs a valid boolean
     private static boolean getNextBoolean(Scanner scanner, String prompt, boolean println){
         while (!scanner.hasNextBoolean()){
             System.out.println("Input a valid boolean! (true/false)");
@@ -49,6 +53,7 @@ public class BookClient {
         }
         return scanner.nextBoolean();
     }
+    //Loops through all the books and either prints their details or just the title based off the parameters given
     private static void printBooks(ArrayList<Book> books, boolean details){
         System.out.println("Books:");
         for (Book book : books) {
@@ -58,10 +63,10 @@ public class BookClient {
             } else {
                 book.printTitle();
             }
-            book.printTitle();
             System.out.println();
         }
     }
+    //Loops through all the borrowed books and either prints their details or just the title based off the parameters given
     private static void printBorrowed(ArrayList<Book> books, boolean details){
         System.out.println("Books:");
         for (Book book : books) {
