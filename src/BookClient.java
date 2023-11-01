@@ -28,10 +28,10 @@ public class BookClient {
         }
         System.out.println();
         System.out.println("All books:");
-        printBooks(books, true);
+        printBooks(books, false);
         System.out.println();
         System.out.println("Borrowed books:");
-        printBorrowed(books, true);
+        printBorrowed(books, false);
     }
     //Makes sure the user inputs a valid integer
     private static int getNextInt(Scanner scanner, String prompt, boolean println){
@@ -61,7 +61,6 @@ public class BookClient {
     }
     //Loops through all the books and either prints their details or just the title based off the parameters given
     private static void printBooks(ArrayList<Book> books, boolean details){
-        System.out.println("Books:");
         for (Book book : books) {
             System.out.print("- ");
             if (details) {
@@ -74,7 +73,6 @@ public class BookClient {
     }
     //Loops through all the borrowed books and either prints their details or just the title based off the parameters given
     private static void printBorrowed(ArrayList<Book> books, boolean details){
-        System.out.println("Books:");
         for (Book book : books) {
             if (book.isBorrowed()) {
                 System.out.print("- ");
