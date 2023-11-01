@@ -26,6 +26,12 @@ public class BookClient {
             scanner.nextLine();
             books.add(new Book(author, title, pages, borrowed));//Adds a new book to the book arraylist
         }
+        System.out.println();
+        System.out.println("All books:");
+        printBooks(books, true);
+        System.out.println();
+        System.out.println("Borrowed books:");
+        printBorrowed(books, true);
     }
     //Makes sure the user inputs a valid integer
     private static int getNextInt(Scanner scanner, String prompt, boolean println){
@@ -81,5 +87,4 @@ public class BookClient {
             }
         }
     }
-
 }
